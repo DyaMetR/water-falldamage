@@ -1,6 +1,6 @@
 --[[-----------------
  WATER FALLING DAMAGE
-	  Version 1.1.1
+	  Version 1.1.2
 	    09/12/16
 
 by DyaMetR
@@ -102,9 +102,11 @@ if CLIENT then
 			}
 		)
 
-		Panel:AddControl( "Textbox", {
+		Panel:AddControl( "Slider", {
 				Label = "Damage multiplier",
 				Command = "wfd_mul",
+				Min = 0,
+				Max = 50
 			}
 		)
 
