@@ -1,6 +1,6 @@
 --[[-----------------
  WATER FALLING DAMAGE
-	   Version 1.1
+	  Version 1.1.1
 	    09/12/16
 
 by DyaMetR
@@ -8,9 +8,9 @@ by DyaMetR
 
 if SERVER then
 
-	local enabled = CreateConVar( "wfd_enabled", "1", {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_NEVER_AS_STRING}, "Water fall damage toggle" );
-	local mul = CreateConVar( "wfd_mul", "1", {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_NEVER_AS_STRING}, "Water fall damage multiplier" );
-	local airSpeedOnly = CreateConVar( "wfd_speed_only", "0", {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_NEVER_AS_STRING}, "Calculate damage only with air speed" );
+	local enabled = CreateConVar( "wfd_enabled", 1, {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_NEVER_AS_STRING}, "Water fall damage toggle" );
+	local mul = CreateConVar( "wfd_mul", 1, {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_NEVER_AS_STRING}, "Water fall damage multiplier" );
+	local airSpeedOnly = CreateConVar( "wfd_speed_only", 0, {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_NEVER_AS_STRING}, "Calculate damage only with air speed" );
 
 	local function Spawn(ply)
 		ply.WaterFallDamage = {
