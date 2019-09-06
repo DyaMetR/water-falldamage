@@ -1,16 +1,16 @@
 --[[-----------------
  WATER FALLING DAMAGE
-	  Version 1.1.2
-	    09/12/16
+	  Version 1.1.3
+	    06/09/19
 
 by DyaMetR
 ]]-------------------
 
 if SERVER then
 
-	local enabled = CreateConVar( "wfd_enabled", 1, {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_NEVER_AS_STRING}, "Water fall damage toggle" );
-	local mul = CreateConVar( "wfd_mul", 1, {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_NEVER_AS_STRING}, "Water fall damage multiplier" );
-	local airSpeedOnly = CreateConVar( "wfd_speed_only", 0, {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_NEVER_AS_STRING}, "Calculate damage only with air speed" );
+	local enabled = CreateConVar( "wfd_enabled", 1, {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Water fall damage toggle" );
+	local mul = CreateConVar( "wfd_mul", 1.0, {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Water fall damage multiplier" );
+	local airSpeedOnly = CreateConVar( "wfd_speed_only", 0, {FCVAR_SERVER_CAN_EXECUTE, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Calculate damage only with air speed" );
 
 	local function Spawn(ply)
 		ply.WaterFallDamage = {
@@ -102,13 +102,7 @@ if CLIENT then
 			}
 		)
 
-		Panel:AddControl( "Slider", {
-				Label = "Damage multiplier",
-				Command = "wfd_mul",
-				Min = 0,
-				Max = 50
-			}
-		)
+		Panel:NumSlider( "Damage multiplier", "wfd_mul", 0, 50, 2 );
 
 		Panel:AddControl( "CheckBox", {
 				Label = "Calculate damage only with air speed",
